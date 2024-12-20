@@ -13,7 +13,7 @@
     width:100%;
 }
 
-#error-span{
+#error-span, #empty-span{
     display:none;
 }
 
