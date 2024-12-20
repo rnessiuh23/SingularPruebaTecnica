@@ -6,9 +6,12 @@ function Formulario({ onSubmit, onNChange }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(n <= 0){
-      document.getElementById("error-span").style.display = "block";
-      onNChange('');
+    console.log(n);
+    if(n == '') {
+      document.getElementById("empty-span").style.display = "block";
+    } else if(n <= 0){
+       document.getElementById("error-span").style.display = "block";
+       onNChange('');
     } else {
       onSubmit(n);
     }
@@ -20,6 +23,7 @@ function Formulario({ onSubmit, onNChange }) {
       const nValue = e.target.value;
 
       if(nValue > 0) document.getElementById("error-span").style.display = "none";
+      if(nValue != '') document.getElementById("empty-span").style.display = "none";
 
       onNChange(nValue);
       setNValue(nValue);
@@ -41,7 +45,10 @@ function Formulario({ onSubmit, onNChange }) {
         </div>
     </form>
     <span className="text-danger" id="error-span">
-        ¡Error en el calculo! El numero ingresado debe ser mayor a 0
+        ¡Error en el calculo! El número ingresado debe ser mayor a 0
+    </span>
+    <span className="text-danger" id="empty-span">
+        ¡Error en el calculo! Debe proporcionar un número
     </span>
   </>
   );
